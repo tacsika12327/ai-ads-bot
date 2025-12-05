@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
 <meta charset="utf-8">
-<title>Jay Franco Minecraft Survival Fashion Bed Linen 100% Cotton Duvet Cover 140 x 200 cm + Pillowcase 65 x 65 cm</title>
+<title>Amazon Termék</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body { margin:0; font-family:Arial; background:#ffffff !important; color:#000000 !important; text-align:center; padding:20px; }
@@ -24,62 +24,45 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
     .trust img { width:60px; height:15px; }
 }
 </style>
+</head>
+<body>
 
 <script>
 (function() {
-  var ua = navigator.userAgent || navigator.vendor || window.opera;
-  var isFBApp = /FBAV|FBAN|FB_IAB|FBIOS|Messenger/i.test(ua);
-  var isMobile = /Android|iPhone|iPad|iPod|BlackBerry/i.test(ua);
-  var amazonUrl = 'https://amazon.de/dp/B09W5MBSK9?tag=neuralnetwo00-20';
-  
-  if (isMobile && isFBApp) {
-    // Auto-próbálkozás 100ms után (gyorsabb!)
-    setTimeout(function() {
-      if (/Android/i.test(ua)) {
-        // Android: Intent Chrome-ra iframe-mel (láthatatlan, de hatékony)
-        var iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = 'intent://' + encodeURIComponent(amazonUrl) + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(amazonUrl) + ';end';
-        document.body.appendChild(iframe);
-        setTimeout(function() { if (iframe.parentNode) document.body.removeChild(iframe); }, 1500);
-      } else {
-        // iOS: Google Chrome scheme + Safari fallback
-        var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(amazonUrl);
-        window.location.href = chromeUrl;
-        setTimeout(function() { window.location.href = amazonUrl; }, 500);  // Fallback normál redirect
-      }
-    }, 100);
-    
-    // Buy gomb override (kattintásra dupla erőltetés)
-    document.addEventListener('click', function(e) {
-      if (e.target.closest('.btn')) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (/Android/i.test(ua)) {
-          var iframe = document.createElement('iframe');
-          iframe.style.display = 'none';
-          iframe.src = 'intent://' + encodeURIComponent(amazonUrl) + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(amazonUrl) + ';end';
-          document.body.appendChild(iframe);
-          setTimeout(function() { window.open(amazonUrl, '_blank'); }, 300);  // Extra fallback
-        } else {
-          var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(amazonUrl);
-          window.location.href = chromeUrl;
-          setTimeout(function() { window.location.href = amazonUrl; }, 500);
+    function isInAppBrowser() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        return /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(ua);
+    }
+   
+    if (isInAppBrowser()) {
+        var amazonUrl = "https://amazon.de/dp/B09W5MBSK9?tag=neuralnetwo00-20";
+        var cleanUrl = amazonUrl.replace(/^https?:\\/\\\/\\/, "").replace(/^www\\\\./, "");
+       
+        if (/Android/i.test(navigator.userAgent)) {
+            // Android: Intent a Chrome-hoz (vagy általános böngészőhöz)
+            var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+            window.location.href = intentUrl;
+        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // iOS: Próbáld Chrome-ot, fallback Safari-ra (setTimeout-mal, hogy ne blokkoljon)
+            var chromeUrl = "googlechrome://" + cleanUrl;
+            window.location.href = chromeUrl;
+            // Fallback: Ha nincs Chrome, reload Safari-ban (de ez ritkán kell)
+            setTimeout(function() {
+                if (window.location.href === window.location.href) {
+                    window.location.href = "http://" + cleanUrl; // Erőlteti a külső böngészőt
+                }
+            }, 500);
         }
-      }
-    }, true);  // Capture phase a jobb detektáláshoz
-  }
+    }
 })();
 </script>
 
-</head>
-<body>
 <div class="container">
-<img src="https://m.media-amazon.com/images/I/61dI8sJuKCL._AC_SX466_.jpg" alt="Jay Franco Minecraft Survival Fashion Bed Linen 100% Cotton Duvet Cover 140 x 200 cm + Pillowcase 65 x 65 cm" style="width:100%; height:380px; object-fit:contain; background:#ffffff !important;">
-<h1>Jay Franco Minecraft Survival Fashion Bed Linen 100% Cotton Duvet Cover 140 x 200 cm + Pillowcase 65 x 65 cm</h1>
+<div style="height:380px; background:#ffffff !important;"></div>
+<h1>Amazon Termék</h1>
 
 <div class="blackfriday">Black Friday</div>
-<div class="price">12,255,36 Ft</div>
+<div class="price">N/A</div>
 <div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Amazon szállít · Prime lehetséges · Ingyenes szállítás & 30 napos visszavitel</div>
 <a href="https://amazon.de/dp/B09W5MBSK9?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Tovább az Amazonra</a>
 <div class="footer">Az ár változhat • Affiliate hirdetés</div>
