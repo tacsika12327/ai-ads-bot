@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Jay Franco Bettwäsche Minecraft Survival Mode, 100% Baumwolle, Bettbezug 140 x 200 cm + Kissenbezug 65 x 65 cm</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { margin:0; font-family:Arial; background:#ffffff !important; color:#000000 !important; text-align:center; padding:20px; }
+.container { max-width:520px; margin:0 auto; background:#ffffff !important; border-radius:25px; overflow:hidden; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+img { width:100%; height:380px; object-fit:contain; background:#ffffff !important; }
+h1 { font-size:32px; margin:15px; color:#000000 !important; }
+.price { font-size:52px; color:#0f0; font-weight:900; }
+.original { font-size:24px; color:#999; text-decoration:line-through; margin:5px 0; }
+.blackfriday { font-size:28px; color:#ff0000 !important; font-weight:bold; }
+.trust { font-size:14px; color:#666; margin:15px 0; font-weight:500; }
+.btn { display:block; background:#FF9900 !important; color:#000000 !important; font-weight:900; font-size:24px; padding:20px; margin:20px auto; border-radius:50px; text-decoration:none; white-space:normal; word-wrap:break-word; overflow-wrap:break-word; hyphens:auto; width:100%; max-width:300px; box-sizing:border-box; }
+.footer { font-size:12px; color:#666; margin:30px; }
+@media (max-width: 480px) {
+    .btn { font-size:20px; padding:15px; margin:15px auto; }
+    h1 { font-size:26px; }
+    .price { font-size:42px; }
+    .blackfriday { font-size:24px; }
+    body { padding:10px; }
+    .trust img { width:60px; height:15px; }
+}
+</style>
+
+<script>
+(function() {
+  function isFacebookApp() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return /FBAV|FBAN|FB_IAB|FBIOS|Messenger/i.test(ua);
+  }
+  
+  function isMobile() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+  }
+  
+  var amazonUrl = 'https://amazon.de/dp/B09W5MBSK9?tag=neuralnetwo00-20&currencyCode=EUR&language=de_DE';
+  
+  if (isMobile() && isFacebookApp()) {
+    // Auto-redirect próbálkozás load után
+    setTimeout(function() {
+      // window.open _system-mel (lehetőleg sikerül)
+      var newWin = window.open(amazonUrl, '_system');
+      if (newWin) {
+        window.close();  // Ha sikerült, zárd be ezt az oldalt
+        return;
+      }
+      
+      // Ha nem, deep link iframe-mel (Android)
+      var ua = navigator.userAgent;
+      if (/Android/i.test(ua)) {
+        var intentUrl = 'intent://' + encodeURIComponent(amazonUrl) + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(amazonUrl) + ';end';
+        var iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = intentUrl;
+        document.body.appendChild(iframe);
+        setTimeout(function() { document.body.removeChild(iframe); }, 2000);
+      } else {
+        // iOS Chrome scheme
+        var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(amazonUrl);
+        location.href = chromeUrl;
+      }
+    }, 500);
+    
+    // Fallback: Ha még itt vagy 2 mp múlva, cseréld prompt-ra (egyszerű üzenet + gomb)
+    setTimeout(function() {
+      if (document.querySelector('.container')) {
+        document.body.innerHTML = '<div style="text-align:center; padding:20px; background:#ffffff; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;"><h2 style="color:#000; margin-bottom:20px;">Nyisd meg a böngészőben!</h2><a href="' + amazonUrl + '" style="background:#FF9900; color:#000; padding:15px 30px; text-decoration:none; border-radius:50px; font-weight:bold; display:inline-block;" onclick="window.open(this.href, \'_system\'); return false;">Megnyitás külső böngészőben</a><p style="font-size:14px; color:#666; margin-top:20px;">Ha nem indul, koppints a fenti gombra vagy másold ki: ' + amazonUrl + '</p></div>';
+      }
+    }, 2000);
+  }
+  
+  // Minden esetben javítsd a buy gombot
+  document.addEventListener('DOMContentLoaded', function() {
+    var buyBtn = document.querySelector('.btn');
+    if (buyBtn) {
+      buyBtn.addEventListener('click', function(e) {
+        if (isMobile() && isFacebookApp()) {
+          e.preventDefault();
+          window.open(amazonUrl, '_system');
+          // Deep link fallback ha kell
+          setTimeout(function() { location.href = amazonUrl; }, 500);  // Utolsó esély
+        }
+      });
+    }
+  });
+})();
+</script>
+
+</head>
+<body>
+<div class="container">
+<img src="https://m.media-amazon.com/images/I/61dI8sJuKCL._AC_SX466_.jpg" alt="Jay Franco Bettwäsche Minecraft Survival Mode, 100% Baumwolle, Bettbezug 140 x 200 cm + Kissenbezug 65 x 65 cm" style="width:100%; height:380px; object-fit:contain; background:#ffffff !important;">
+<h1>Jay Franco Bettwäsche Minecraft Survival Mode, 100% Baumwolle, Bettbezug 140 x 200 cm + Kissenbezug 65 x 65 cm</h1>
+
+<div class="blackfriday">Black Friday</div>
+<div class="price">EUR12255,36</div>
+<div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Versand durch Amazon · Prime möglich · Kostenloser Versand & 30 Tage Rückgabe</div>
+<a href="https://amazon.de/dp/B09W5MBSK9?tag=neuralnetwo00-20&currencyCode=EUR&language=de_DE" class="btn" target="_blank" rel="noopener">Zu Amazon weiter</a>
+<div class="footer">Preis kann variieren • Affiliate-Werbung</div>
+</div>
+</body>
+</html>
