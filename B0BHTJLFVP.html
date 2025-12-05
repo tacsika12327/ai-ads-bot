@@ -28,19 +28,33 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 <body>
 
 <script>
-  // FB és Messenger in-app böngésző detektálása → átirányítás rendes böngészőbe
-  if (navigator.userAgent.match(/FBAN|FBAV|FB_IAB|FBIOS|Messenger/i)) {
-      // Android → Chrome
-      if (navigator.userAgent.indexOf("Android") > -1) {
-          location.href = "intent:" + location.href + "#Intent;scheme=https;package=com.android.chrome;end";
-      }
-      // iPhone/iPad → Safari vagy Chrome
-      else {
-          setTimeout(function() {
-              location.href = location.href;
-          }, 100);
-      }
-  }
+(function() {
+    function isInAppBrowser() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        return /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(ua);
+    }
+    
+    if (isInAppBrowser()) {
+        var currentUrl = window.location.href;
+        var cleanUrl = currentUrl.replace(/^https?:\/\//, "").replace(/^www\./, "");
+        
+        if (/Android/i.test(navigator.userAgent)) {
+            // Android: Intent a Chrome-hoz (vagy általános böngészőhöz)
+            var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+            window.location.href = intentUrl;
+        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // iOS: Próbáld Chrome-ot, fallback Safari-ra (setTimeout-mal, hogy ne blokkoljon)
+            var chromeUrl = "googlechrome://" + cleanUrl;
+            window.location.href = chromeUrl;
+            // Fallback: Ha nincs Chrome, reload Safari-ban (de ez ritkán kell)
+            setTimeout(function() {
+                if (window.location.href === currentUrl) {
+                    window.location.href = "http://" + cleanUrl;  // Erőlteti a külső böngészőt
+                }
+            }, 500);
+        }
+    }
+})();
 </script>
 
 <div class="container">
