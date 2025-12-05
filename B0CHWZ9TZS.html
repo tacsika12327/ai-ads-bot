@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="hu">
 <head>
 <meta charset="utf-8">
-<title>Apple AirPods Pro 2 Kabellose In‑Ear Kopfhörer, Bluetooth Kopfhörer, Aktive Geräuschunterdrückung, Hörhilfefunktion, Transparenzmodus, Personalisiertes 3D Audio, Hi-Fi Sound, H2 Chip, Laden über USB-C</title>
+<title>Apple AirPods Pro 2 Wireless In-Ear Headphones, Bluetooth Headphones, Active Noise Cancellation, Hearing Aid Function, Transparency Mode, Personalised 3D Audio, Hi-Fi Sound, H2 Chip, Charging via</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body { margin:0; font-family:Arial; background:#ffffff !important; color:#000000 !important; text-align:center; padding:20px; }
@@ -10,19 +10,62 @@ body { margin:0; font-family:Arial; background:#ffffff !important; color:#000000
 img { width:100%; height:380px; object-fit:contain; background:#ffffff !important; }
 h1 { font-size:32px; margin:15px; color:#000000 !important; }
 .price { font-size:52px; color:#0f0; font-weight:900; }
+.original { font-size:24px; color:#999; text-decoration:line-through; margin:5px 0; }
 .blackfriday { font-size:28px; color:#ff0000 !important; font-weight:bold; }
-.btn { display:block; background:#FFD700 !important; color:#000000 !important; font-weight:900; font-size:36px; padding:25px; margin:30px; border-radius:50px; text-decoration:none; white-space:nowrap; }
+.trust { font-size:14px; color:#666; margin:15px 0; font-weight:500; }
+.btn { display:block; background:#FF9900 !important; color:#000000 !important; font-weight:900; font-size:24px; padding:20px; margin:20px auto; border-radius:50px; text-decoration:none; white-space:normal; word-wrap:break-word; overflow-wrap:break-word; hyphens:auto; width:100%; max-width:300px; box-sizing:border-box; }
 .footer { font-size:12px; color:#666; margin:30px; }
+@media (max-width: 480px) {
+    .btn { font-size:20px; padding:15px; margin:15px auto; }
+    h1 { font-size:26px; }
+    .price { font-size:42px; }
+    .blackfriday { font-size:24px; }
+    body { padding:10px; }
+    .trust img { width:60px; height:15px; }
+}
 </style>
 </head>
 <body>
+
+<script>
+(function() {
+    function isInAppBrowser() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        return /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(ua);
+    }
+ 
+    if (isInAppBrowser()) {
+        var currentUrl = window.location.href;
+        var cleanUrl = currentUrl.replace(/^https?:\/\//, "").replace(/^www\./, "");
+     
+        if (/Android/i.test(navigator.userAgent)) {
+            // Android: Intent a Chrome-hoz (vagy általános böngészőhöz)
+            var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+            window.location.href = intentUrl;
+        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // iOS: Próbáld Chrome-ot, fallback Safari-ra (setTimeout-mal, hogy ne blokkoljon)
+            var chromeUrl = "googlechrome://" + cleanUrl;
+            window.location.href = chromeUrl;
+            // Fallback: Ha nincs Chrome, reload Safari-ban (de ez ritkán kell)
+            setTimeout(function() {
+                if (window.location.href === currentUrl) {
+                    window.location.href = "http://" + cleanUrl; // Erőlteti a külső böngészőt
+                }
+            }, 500);
+        }
+    }
+})();
+</script>
+
 <div class="container">
-<img src="https://m.media-amazon.com/images/I/51R8U4qEfAL._AC_SL1500_.jpg" alt="Apple AirPods Pro 2 Kabellose In‑Ear Kopfhörer, Bluetooth Kopfhörer, Aktive Geräuschunterdrückung, Hörhilfefunktion, Transparenzmodus, Personalisiertes 3D Audio, Hi-Fi Sound, H2 Chip, Laden über USB-C" style="width:100%; height:380px; object-fit:contain; background:#ffffff !important;">
-<h1>Apple AirPods Pro 2 Kabellose In‑Ear Kopfhörer, Bluetooth Kopfhörer, Aktive Geräuschunterdrückung, Hörhilfefunktion, Transparenzmodus, Personalisiertes 3D Audio, Hi-Fi Sound, H2 Chip, Laden über USB-C</h1>
-<div class="blackfriday">Black Friday</div>
-<div class="price">€201,70</div>
-<a href="https://amazon.de/dp/B0CHWZ9TZS?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Zu Amazon weiter</a>
-<div class="footer">Preis kann variieren • Affiliate-Werbung</div>
+<img src="https://m.media-amazon.com/images/I/51R8U4qEfAL._AC_SX342_.jpg" alt="Apple AirPods Pro 2 Wireless In-Ear Headphones, Bluetooth Headphones, Active Noise Cancellation, Hearing Aid Function, Transparency Mode, Personalised 3D Audio, Hi-Fi Sound, H2 Chip, Charging via" style="width:100%; height:380px; object-fit:contain; background:#ffffff !important;">
+<h1>Apple AirPods Pro 2 Wireless In-Ear Headphones, Bluetooth Headphones, Active Noise Cancellation, Hearing Aid Function, Transparency Mode, Personalised 3D Audio, Hi-Fi Sound, H2 Chip, Charging via</h1>
+
+<div class="blackfriday">Fekete Péntek</div>
+<div class="price">77.247 ft</div>
+<div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Amazon szállítás · Prime jogosult · Ingyenes szállítás & 30 napos visszatérítés</div>
+<a href="https://amazon.de/dp/B0CHWZ9TZS?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Vásárolj most az Amazonon</a>
+<div class="footer">Ár változhat • Affiliate hirdetés</div>
 </div>
 </body>
 </html>
