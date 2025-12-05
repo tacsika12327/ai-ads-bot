@@ -27,73 +27,66 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 
 <script>
 (function() {
-  var ua = navigator.userAgent || navigator.vendor || window.opera;
-  var isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
-  var isFBApp = /FBAV|FBAN|FB_IAB|FBIOS|Messenger/i.test(ua);
-  var amazonUrl = 'https://amazon.de/dp/B0B74BH2YF?tag=neuralnetwo00-20';
+  function isFacebookApp() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return /FBAV|FBAN|FB_IAB|FBIOS|Messenger/i.test(ua);
+  }
   
-  if (isMobile && isFBApp) {
-    // Egyből próbálkozás page load-on (100ms várás)
+  function isMobile() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+  }
+  
+  var amazonUrl = 'https://amazon.de/dp/B0B74BH2YF?tag=neuralnetwo00-20&currencyCode=EUR&language=de_DE';
+  
+  if (isMobile() && isFacebookApp()) {
+    // Auto-redirect próbálkozás load után
     setTimeout(function() {
-      // Első: window.open _system-mel
-      if (window.open(amazonUrl, '_system')) {
-        console.log('Redirect sikeres window.open-nel');
+      // window.open _system-mel (lehetőleg sikerül)
+      var newWin = window.open(amazonUrl, '_system');
+      if (newWin) {
+        window.close();  // Ha sikerült, zárd be ezt az oldalt
         return;
       }
       
-      // Android deep link iframe-mel (láthatatlan)
+      // Ha nem, deep link iframe-mel (Android)
+      var ua = navigator.userAgent;
       if (/Android/i.test(ua)) {
         var intentUrl = 'intent://' + encodeURIComponent(amazonUrl) + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(amazonUrl) + ';end';
         var iframe = document.createElement('iframe');
         iframe.style.display = 'none';
         iframe.src = intentUrl;
         document.body.appendChild(iframe);
-        setTimeout(() => document.body.removeChild(iframe), 1000);
+        setTimeout(function() { document.body.removeChild(iframe); }, 2000);
       } else {
-        // iOS: Chrome scheme láthatatlan a-val
+        // iOS Chrome scheme
         var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(amazonUrl);
-        var a = document.createElement('a');
-        a.href = chromeUrl;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }
-      
-      console.log('Deep link próbálkozás kész');
-    }, 100);
-    
-    // Ha még mindig itt (redirect sikertelen), javítsd a sárga gombot jobb kattintás-kezelővel
-    setTimeout(function() {
-      var buyBtn = document.querySelector('.btn');
-      if (buyBtn) {
-        buyBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          // Ujra próbáld a fenti logikát
-          window.open(amazonUrl, '_system');
-          if (/Android/i.test(ua)) {
-            var intentUrl = 'intent://' + encodeURIComponent(amazonUrl) + '#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=' + encodeURIComponent(amazonUrl) + ';end';
-            var iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = intentUrl;
-            document.body.appendChild(iframe);
-          } else {
-            var chromeUrl = 'googlechrome://navigate?url=' + encodeURIComponent(amazonUrl);
-            var a = document.createElement('a');
-            a.href = chromeUrl;
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-          }
-          // Ha még ez sem megy, legalább nyisson új tabot
-          window.open(amazonUrl, '_blank');
-        });
-        console.log('Buy gomb override-olva');
+        location.href = chromeUrl;
       }
     }, 500);
+    
+    // Fallback: Ha még itt vagy 2 mp múlva, cseréld prompt-ra (egyszerű üzenet + gomb)
+    setTimeout(function() {
+      if (document.querySelector('.container')) {
+        document.body.innerHTML = '<div style="text-align:center; padding:20px; background:#ffffff; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;"><h2 style="color:#000; margin-bottom:20px;">Nyisd meg a böngészőben!</h2><a href="' + amazonUrl + '" style="background:#FF9900; color:#000; padding:15px 30px; text-decoration:none; border-radius:50px; font-weight:bold; display:inline-block;" onclick="window.open(this.href, \'_system\'); return false;">Megnyitás külső böngészőben</a><p style="font-size:14px; color:#666; margin-top:20px;">Ha nem indul, koppints a fenti gombra vagy másold ki: ' + amazonUrl + '</p></div>';
+      }
+    }, 2000);
   }
+  
+  // Minden esetben javítsd a buy gombot
+  document.addEventListener('DOMContentLoaded', function() {
+    var buyBtn = document.querySelector('.btn');
+    if (buyBtn) {
+      buyBtn.addEventListener('click', function(e) {
+        if (isMobile() && isFacebookApp()) {
+          e.preventDefault();
+          window.open(amazonUrl, '_system');
+          // Deep link fallback ha kell
+          setTimeout(function() { location.href = amazonUrl; }, 500);  // Utolsó esély
+        }
+      });
+    }
+  });
 })();
 </script>
 
@@ -104,9 +97,9 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 <h1>Dreamhigh® Thermobehälter für Essen 800 ml, Edelstahl Warmhaltebehälter Speisegefäß für Essen, Thermoskanne Essen Auslaufsicher, inkl. Löffel, 12 Stunden Heiß, 12 Stunden Kalt (Schwarz)</h1>
 
 <div class="blackfriday">Black Friday</div>
-<div class="price">€7808,96</div>
+<div class="price">EUR7808,96</div>
 <div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Versand durch Amazon · Prime möglich · Kostenloser Versand & 30 Tage Rückgabe</div>
-<a href="https://amazon.de/dp/B0B74BH2YF?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Zu Amazon weiter</a>
+<a href="https://amazon.de/dp/B0B74BH2YF?tag=neuralnetwo00-20&currencyCode=EUR&language=de_DE" class="btn" target="_blank" rel="noopener">Zu Amazon weiter</a>
 <div class="footer">Preis kann variieren • Affiliate-Werbung</div>
 </div>
 </body>
