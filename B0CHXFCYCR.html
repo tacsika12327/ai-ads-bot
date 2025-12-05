@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="hu">
 <head>
 <meta charset="utf-8">
 <title>Apple iPhone 15 (128GB) - Black</title>
@@ -26,15 +26,46 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 </style>
 </head>
 <body>
+
+<script>
+(function() {
+    function isInAppBrowser() {
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        return /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(ua);
+    }
+ 
+    if (isInAppBrowser()) {
+        var currentUrl = window.location.href;
+        var cleanUrl = currentUrl.replace(/^https?:\/\//, "").replace(/^www\./, "");
+     
+        if (/Android/i.test(navigator.userAgent)) {
+            // Android: Intent a Chrome-hoz (vagy általános böngészőhöz)
+            var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+            window.location.href = intentUrl;
+        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // iOS: Próbáld Chrome-ot, fallback Safari-ra (setTimeout-mal, hogy ne blokkoljon)
+            var chromeUrl = "googlechrome://" + cleanUrl;
+            window.location.href = chromeUrl;
+            // Fallback: Ha nincs Chrome, reload Safari-ban (de ez ritkán kell)
+            setTimeout(function() {
+                if (window.location.href === currentUrl) {
+                    window.location.href = "http://" + cleanUrl; // Erőlteti a külső böngészőt
+                }
+            }, 500);
+        }
+    }
+})();
+</script>
+
 <div class="container">
 <img src="https://m.media-amazon.com/images/I/61eEYLATF9L._AC_SX342_.jpg" alt="Apple iPhone 15 (128GB) - Black" style="width:100%; height:380px; object-fit:contain; background:#ffffff !important;">
 <h1>Apple iPhone 15 (128GB) - Black</h1>
 
-<div class="blackfriday">Black Friday</div>
-<div class="price">€692,63</div>
-<div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Versand durch Amazon · Prime möglich · Kostenloser Versand & 30 Tage Rückgabe</div>
-<a href="https://amazon.de/dp/B0CHXFCYCR?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Zu Amazon weiter</a>
-<div class="footer">Preis kann variieren • Affiliate-Werbung</div>
+<div class="blackfriday">Fekete Péntek</div>
+<div class="price">197.533 ft</div>
+<div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Amazon szállítás · Prime jogosult · Ingyenes szállítás & 30 napos visszatérítés</div>
+<a href="https://amazon.de/dp/B0CHXFCYCR?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Vásárolj most az Amazonon</a>
+<div class="footer">Ár változhat • Affiliate hirdetés</div>
 </div>
 </body>
 </html>
