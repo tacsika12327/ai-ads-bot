@@ -15,12 +15,13 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 .trust { font-size:14px; color:#666; margin:15px 0; font-weight:500; }
 .btn { display:block; background:#FF9900 !important; color:#000000 !important; font-weight:900; font-size:24px; padding:20px; margin:20px auto; border-radius:50px; text-decoration:none; white-space:normal; word-wrap:break-word; overflow-wrap:break-word; hyphens:auto; width:100%; max-width:300px; box-sizing:border-box; }
 .footer { font-size:12px; color:#666; margin:30px; }
-.motivating { font-size:18px; line-height:1.6; margin:20px 15px; color:#333; font-weight:500; }
 @media (max-width: 480px) {
-    .btn { font-size:20px; padding:15px; }
+    .btn { font-size:20px; padding:15px; margin:15px auto; }
     h1 { font-size:26px; }
     .price { font-size:42px; }
-    .motivating { font-size:16px; }
+    .blackfriday { font-size:24px; }
+    body { padding:10px; }
+    .trust img { width:60px; height:15px; }
 }
 </style>
 </head>
@@ -35,15 +36,19 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
     if (isInAppBrowser()) {
         var currentUrl = window.location.href;
         var cleanUrl = currentUrl.replace(/^https?:\/\//, "").replace(/^www\./, "");
+   
         if (/Android/i.test(navigator.userAgent)) {
+            // Android: Intent a Chrome-hoz (vagy általános böngészőhöz)
             var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
             window.location.href = intentUrl;
         } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // iOS: Próbáld Chrome-ot, fallback Safari-ra (setTimeout-mal, hogy ne blokkoljon)
             var chromeUrl = "googlechrome://" + cleanUrl;
             window.location.href = chromeUrl;
+            // Fallback: Ha nincs Chrome, reload Safari-ban (de ez ritkán kell)
             setTimeout(function() {
                 if (window.location.href === currentUrl) {
-                    window.location.href = "http://" + cleanUrl;
+                    window.location.href = "http://" + cleanUrl; // Erőlteti a külső böngészőt
                 }
             }, 500);
         }
@@ -54,13 +59,6 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 <div class="container">
 <img src="https://m.media-amazon.com/images/I/71NJnPlauQL._SY445_.jpg" alt="Wobbly Life (Switch)" style="width:100%; height:380px; object-fit:contain; background:#ffffff !important;">
 <h1>Wobbly Life (Switch)</h1>
-<div class="motivating">1. „Verpasse nicht die Chance, das lustige Chaos in Wobbly Life zu erleben – jeder Moment zählt, sichere dir jetzt dein Abenteuer auf der Nintendo Switch!“
-
-2. „Tauche ein in die bunten Welten von Wobbly Life und erlebe unvergessliche Momente mit deinen Freunden – begrenzte Stückzahl, also greif schnell zu!“
-
-3. „Die Wobbly-Welt voller Spaß und Überraschungen wartet auf dich – nimm das Abenteuer mit nach Hause, bevor es zu spät ist!“
-
-4. „Jeder Klick auf 'Kaufen' bringt dich näher zu einer unvergesslichen Reise durch Wobbly Life – zögere nicht, das Vergnügen ist nur einen Schritt entfernt!“</div>
 
 <div class="blackfriday">Black Friday</div>
 <div class="price">15.085,04 €</div>
