@@ -13,6 +13,7 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 .original { font-size:24px; color:#999; text-decoration:line-through; margin:5px 0; }
 .blackfriday { font-size:28px; color:#ff0000 !important; font-weight:bold; }
 .trust { font-size:14px; color:#666; margin:15px 0; font-weight:500; }
+.cta-urgent { font-size:20px; font-weight:800; color:#e74c3c; margin:30px 15px; line-height:1.6; text-align:center; }
 .btn { display:block; background:#FF9900 !important; color:#000000 !important; font-weight:900; font-size:24px; padding:20px; margin:20px auto; border-radius:50px; text-decoration:none; white-space:normal; word-wrap:break-word; overflow-wrap:break-word; hyphens:auto; width:100%; max-width:300px; box-sizing:border-box; }
 .footer { font-size:12px; color:#666; margin:30px; }
 @media (max-width: 480px) {
@@ -36,19 +37,16 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
     if (isInAppBrowser()) {
         var currentUrl = window.location.href;
         var cleanUrl = currentUrl.replace(/^https?:\/\//, "").replace(/^www\./, "");
-   
+  
         if (/Android/i.test(navigator.userAgent)) {
-            // Android: Intent a Chrome-hoz (vagy általános böngészőhöz)
             var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
             window.location.href = intentUrl;
         } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            // iOS: Próbáld Chrome-ot, fallback Safari-ra (setTimeout-mal, hogy ne blokkoljon)
             var chromeUrl = "googlechrome://" + cleanUrl;
             window.location.href = chromeUrl;
-            // Fallback: Ha nincs Chrome, reload Safari-ban (de ez ritkán kell)
             setTimeout(function() {
                 if (window.location.href === currentUrl) {
-                    window.location.href = "http://" + cleanUrl; // Erőlteti a külső böngészőt
+                    window.location.href = "http://" + cleanUrl;
                 }
             }, 500);
         }
@@ -63,6 +61,7 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 <div class="blackfriday">Black Friday</div>
 <div class="price">15.085,04 €</div>
 <div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Versand durch Amazon · Prime möglich · Kostenloser Versand & 30 Tage Rückgabe</div>
+<div style="font-size:20px; font-weight:800; color:#e74c3c; margin:30px 15px; line-height:1.6; text-align:center;">Verpasse nicht die Chance deines Lebens – die Welt von Wobbly Life wartet auf dich! Mit jedem Moment, der vergeht, könnte jemand anderes dieses einzigartige Erlebnis für sich sichern. Dein Abenteuer beginnt JETZT, also greif zu, bevor es zu spät ist! Der Spaß und die unvergesslichen Erinnerungen sind nur einen Klick entfernt!</div>
 <a href="https://amazon.de/dp/B0FFY14WPC?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Zu Amazon weiter</a>
 <div class="footer">Preis kann variieren • Affiliate-Werbung</div>
 </div>
