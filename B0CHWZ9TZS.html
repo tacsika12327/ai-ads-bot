@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="de">
 <head>
 <meta charset="utf-8">
 <title>Apple AirPods Pro 2 Wireless In-Ear Headphones, Bluetooth Headphones, Active Noise Cancellation, Hearing Aid Function, Transparency Mode, Personalised 3D Audio, Hi-Fi Sound, H2 Chip, Charging via</title>
@@ -13,6 +13,7 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 .original { font-size:24px; color:#999; text-decoration:line-through; margin:5px 0; }
 .blackfriday { font-size:28px; color:#ff0000 !important; font-weight:bold; }
 .trust { font-size:14px; color:#666; margin:15px 0; font-weight:500; }
+.cta-urgent { font-size:20px; font-weight:800; color:#e74c3c; margin:30px 15px; line-height:1.6; text-align:center; }
 .btn { display:block; background:#FF9900 !important; color:#000000 !important; font-weight:900; font-size:24px; padding:20px; margin:20px auto; border-radius:50px; text-decoration:none; white-space:normal; word-wrap:break-word; overflow-wrap:break-word; hyphens:auto; width:100%; max-width:300px; box-sizing:border-box; }
 .footer { font-size:12px; color:#666; margin:30px; }
 @media (max-width: 480px) {
@@ -33,23 +34,19 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
         var ua = navigator.userAgent || navigator.vendor || window.opera;
         return /FBAN|FBAV|FB_IAB|FBIOS|Messenger|Instagram/i.test(ua);
     }
- 
     if (isInAppBrowser()) {
         var currentUrl = window.location.href;
         var cleanUrl = currentUrl.replace(/^https?:\/\//, "").replace(/^www\./, "");
-     
+  
         if (/Android/i.test(navigator.userAgent)) {
-            // Android: Intent a Chrome-hoz (vagy általános böngészőhöz)
             var intentUrl = "intent://" + cleanUrl + "#Intent;scheme=https;package=com.android.chrome;end";
             window.location.href = intentUrl;
         } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            // iOS: Próbáld Chrome-ot, fallback Safari-ra (setTimeout-mal, hogy ne blokkoljon)
             var chromeUrl = "googlechrome://" + cleanUrl;
             window.location.href = chromeUrl;
-            // Fallback: Ha nincs Chrome, reload Safari-ban (de ez ritkán kell)
             setTimeout(function() {
                 if (window.location.href === currentUrl) {
-                    window.location.href = "http://" + cleanUrl; // Erőlteti a külső böngészőt
+                    window.location.href = "http://" + cleanUrl;
                 }
             }, 500);
         }
@@ -61,11 +58,12 @@ h1 { font-size:32px; margin:15px; color:#000000 !important; }
 <img src="https://m.media-amazon.com/images/I/51R8U4qEfAL._AC_SX342_.jpg" alt="Apple AirPods Pro 2 Wireless In-Ear Headphones, Bluetooth Headphones, Active Noise Cancellation, Hearing Aid Function, Transparency Mode, Personalised 3D Audio, Hi-Fi Sound, H2 Chip, Charging via" style="width:100%; height:380px; object-fit:contain; background:#ffffff !important;">
 <h1>Apple AirPods Pro 2 Wireless In-Ear Headphones, Bluetooth Headphones, Active Noise Cancellation, Hearing Aid Function, Transparency Mode, Personalised 3D Audio, Hi-Fi Sound, H2 Chip, Charging via</h1>
 
-<div class="blackfriday">Fekete Péntek</div>
-<div class="price">77.247 ft</div>
-<div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Amazon szállítás · Prime jogosult · Ingyenes szállítás & 30 napos visszatérítés</div>
-<a href="https://amazon.de/dp/B0CHWZ9TZS?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Vásárolj most az Amazonon</a>
-<div class="footer">Ár változhat • Affiliate hirdetés</div>
+<div class="blackfriday">Black Friday</div>
+<div class="price">77.612,13 €</div>
+<div class="trust"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/128px-Amazon_logo.svg.png" alt="Amazon" style="width:80px; height:20px; margin:5px; vertical-align:middle;">Versand durch Amazon · Prime möglich · Kostenloser Versand & 30 Tage Rückgabe</div>
+<div style="font-size:20px; font-weight:800; color:#e74c3c; margin:30px 15px; line-height:1.6; text-align:center;">Verpasse nicht die Chance, deine musikalische Freiheit mit den Apple AirPods Pro 2 zu erleben! Diese revolutionären Kopfhörer bieten dir erstklassigen Klang und innovative Funktionen, die dein Hörerlebnis auf ein neues Level heben. Der Bestand ist begrenzt – greife jetzt zu, bevor es zu spät ist! Deine Ohren verdienen das Beste!</div>
+<a href="https://amazon.de/dp/B0CHWZ9TZS?tag=neuralnetwo00-20" class="btn" target="_blank" rel="noopener">Zu Amazon weiter</a>
+<div class="footer">Preis kann variieren • Affiliate-Werbung</div>
 </div>
 </body>
 </html>
